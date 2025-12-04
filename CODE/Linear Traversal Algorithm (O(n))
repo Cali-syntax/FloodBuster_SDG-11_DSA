@@ -1,0 +1,4 @@
+void resetFlood() {
+        for (int i = 0; i < flooded.size(); i++)
+            flooded[i] = false;
+    }
