@@ -100,30 +100,31 @@ int readInt(const string &prompt) {
 
 int main() {
 
-    vector<string> names;
-    names.push_back("Barangay A");
-    names.push_back("Barangay B");
-    names.push_back("Barangay C");
-    names.push_back("Barangay D");
-    names.push_back("Barangay E");
-    names.push_back("Barangay F");
-    names.push_back("Barangay G");
-    names.push_back("Barangay H");
+    vector<string> names = {
+   "Barangay A","Barangay B","Barangay C","Barangay D","Barangay E","Barangay F",
+    "Barangay G","Barangay H","Barangay I","Barangay J","Barangay K","Barangay L",
+    "Barangay M","Barangay N","Barangay O","Barangay P","Barangay Q","Barangay R",
+    "Barangay S","Barangay T","Barangay U","Barangay V","Barangay W","Barangay X",
+    "Barangay Y","Barangay Z","Barangay AA","Barangay AB","Barangay AC","Barangay AD","Barangay AE",
+    "Barangay AF","Barangay AG","Barangay AH","Barangay AI","Barangay AJ",
+    "Barangay AK","Barangay AL","Barangay AM","Barangay AN","Barangay AO",
+    "Barangay AP","Barangay AQ","Barangay AR","Barangay AS","Barangay AT",
+    "Barangay AU","Barangay AV","Barangay AW","Barangay AX","Barangay AY",
+    "Barangay AZ"
+};
 
-    unordered_map<string, int> nameToNode;
-    for (int i = 0; i < names.size(); i++) {
-        nameToNode[names[i]] = i;
-    }
+unordered_map<string, int> nameToNode;
+for (int i = 0; i < names.size(); i++) {
+    nameToNode[names[i]] = i;
+}
 
-    Graph g(8);
 
-    g.addEdge(0, 1, 4);
-    g.addEdge(1, 2, 3);
-    g.addEdge(2, 3, 2);
-    g.addEdge(1, 4, 6);
-    g.addEdge(4, 5, 5);
-    g.addEdge(5, 6, 1);
-    g.addEdge(6, 7, 7);
+Graph g(names.size());
+
+
+for (int i = 0; i < names.size() - 1; i++) {
+    g.addEdge(i, i + 1, 3); 
+}
 
     vector<EvacCenter> evacCenters;
 
