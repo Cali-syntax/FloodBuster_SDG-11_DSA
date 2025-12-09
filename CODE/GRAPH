@@ -1,15 +1,26 @@
- Graph(int vertices) {
+class Graph {
+private:
+    int V;
+    vector< vector< pair<int, int> > > adj;
+    vector<bool> flooded;
+
+public:
+    Graph(int vertices) {
         V = vertices;
         adj.resize(V);
         flooded.resize(V, false);
     }
 
-Graph g(8);
+    void addEdge(int u, int v, int w) {
+        adj[u].push_back(make_pair(v, w));
+        adj[v].push_back(make_pair(u, w));
+    }
 
-    g.addEdge(0, 1, 4);
-    g.addEdge(1, 2, 3);
-    g.addEdge(2, 3, 2);
-    g.addEdge(1, 4, 6);
-    g.addEdge(4, 5, 5);
-    g.addEdge(5, 6, 1);
-    g.addEdge(6, 7, 7);
+    void markFlooded(int node) {
+        flooded[node] = true;
+    }
+
+    void resetFlood() {
+        for (int i = 0; i < flooded.size(); i++)
+            flooded[i] = false;
+    }
